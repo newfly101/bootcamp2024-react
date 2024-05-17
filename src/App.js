@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import TextComponents from "./components/TextComponents";
+import Section from "./components/Section";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           Learn React
         </a>
         <TextComponents />
+        <Section />
       </header>
     </div>
   );
