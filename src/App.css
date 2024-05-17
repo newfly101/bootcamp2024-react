@@ -38,3 +38,13 @@
     opacity: 0.5;
     padding: 0;
 }
+
+.toast-success {
+    border-color: green;
+}
+.toast-warning {
+    border-color: orange;
+}
+.toast-error {
+    border-color: red;
+}
