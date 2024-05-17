@@ -30,12 +30,9 @@ function App() {
     ]
     return (
         <div className="wrapper">
-            <Toast title={messageArray[0].title} text={messageArray[0].text}/>
-            <Toast title={messageArray[1].title} text={messageArray[1].text}/>
-            <Toast title={messageArray[2].title} text={messageArray[2].text}/>
-            <Toast title={messageArray[3].title} text={messageArray[3].text}/>
-            <Toast title={messageArray[4].title} text={messageArray[4].text}/>
-            <Toast title={messageArray[5].title} text={messageArray[5].text}/>
+            {messageArray.map((message, index) =>
+                <Toast title={message.title} text={message.text}/>
+            )}
         </div>
     );
 }
