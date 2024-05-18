@@ -1,6 +1,7 @@
 import React from 'react';
+import "./Toast.css";
 
-const ToastMessage = (message) => {
+const ToastMessage = ({message}) => {
     return (
         <div>
             <main className="toast__message">
