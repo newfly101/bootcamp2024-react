@@ -1,5 +1,5 @@
 import './App.css';
-import Toast from "./components/Toast";
+import Toast, {hello, world} from "./components/Toast";
 import ToastMessage from "./components/ToastMessage";
 import ToastButton from "./components/ToastButton";
 
@@ -38,6 +38,7 @@ function App() {
                 <ToastMessage message={messageArray[2]}/>
                 <ToastButton />
             </Toast>
+            <div>{hello} {world}</div>
         </div>
     );
 }
