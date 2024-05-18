@@ -1,6 +1,7 @@
 import React from 'react';
 import "./Toast.css";
 
+// 리-팩토링
 const Toast = ({message}) => {
     return (
         <div>
