@@ -31,7 +31,7 @@ function App() {
     return (
         <div className="wrapper">
             {messageArray.map((message, index) =>
-                <Toast title={message.title} text={message.text}/>
+                <Toast message={message}/>
             )}
         </div>
     );
