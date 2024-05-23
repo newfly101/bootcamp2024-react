@@ -5,6 +5,13 @@ import ToastButton from "./components/ToastButton";
 import NewPayment from "./components/NewPayment/NewPayment";
 import Expenses from "./components/Payments/Expenses";
 import {useState} from "react";
+import AlexaImage from "./images/alexa.png";
+import CortanaImage from "./images/cortana.png";
+import SiriImage from "./images/siri.png";
+
+console.log("AlexaImage : ",AlexaImage);
+console.log("SiriImage : ",SiriImage);
+
 
 function App() {
     const messageArray = [
@@ -45,6 +52,8 @@ function App() {
             ))}
             <NewPayment getPaymentFormData={getPaymentFormData}/>
             <Expenses items={expenses} />
+            <img src={AlexaImage} alt="Alexa" style={{ width:400, height:400 }} />
+            <img src={SiriImage} alt="Siri" width={400} height={400}/>
         </div>
     );
 }
