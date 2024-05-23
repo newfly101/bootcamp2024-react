@@ -27,7 +27,7 @@ const PaymentForm = ({getPaymentFormData}) => {
         // console.log("objectState", objectState);
         // 초기화
         setObjectState({
-            id : 'addData',
+            id : Math.random().toString(),
             title : '',
             amount : 0,
             date : new Date()

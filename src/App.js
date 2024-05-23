@@ -30,7 +30,7 @@ function App() {
     ];
 
     const [expenses, setExpenses] = useState([{
-            id: '1',
+            id: Math.random().toString(),
             title: '수건',
             amount: 12.33,
             date: new Date(2025, 8-1, 2),
@@ -42,6 +42,16 @@ function App() {
         });
     };
 
+    const deletePaymentData = (index) => {
+        // const newFilteredArray
+        //  = expenses.filter((item) => item.id === id);
+        // setExpenses(newFilteredArray);
+
+        // const beforeArray = expenses.slice(0, index);
+        // const afterArray = expenses.slice(index + 1);
+        // setExpenses([...beforeArray, ...afterArray]);
+    }
+
     return (
         <div className="wrapper">
             {messageArray.map((message, index) => (
@@ -51,7 +61,7 @@ function App() {
                 </Toast>
             ))}
             <NewPayment getPaymentFormData={getPaymentFormData}/>
-            <Expenses items={expenses} />
+            <Expenses items={expenses} deletePaymentData={deletePaymentData}/>
             <img src={AlexaImage} alt="Alexa" style={{ width:400, height:400 }} />
             <img src={SiriImage} alt="Siri" width={400} height={400}/>
         </div>
