@@ -52,13 +52,16 @@ function App() {
     };
 
     const deletePaymentData = (index, id) => {
-        const newFilteredArray
-         = expenses.filter((item) => item.id !== id);
-        setExpenses(newFilteredArray);
+        // const newFilteredArray
+        //  = expenses.filter((item) => item.id !== id);
+        // setExpenses(newFilteredArray);
 
-        // const beforeArray = expenses.slice(0, index);
-        // const afterArray = expenses.slice(index + 1);
-        // setExpenses([...beforeArray, ...afterArray]);
+        console.log("index : ", index);
+        console.log("id : ", id);
+
+        const beforeArray = expenses.slice(0, index);
+        const afterArray = expenses.slice(index + 1);
+        setExpenses([...beforeArray, ...afterArray]);
     }
 
     return (
