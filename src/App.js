@@ -5,12 +5,12 @@ import ToastButton from "./components/ToastButton";
 import NewPayment from "./components/NewPayment/NewPayment";
 import Expenses from "./components/Payments/Expenses";
 import {useState} from "react";
-import AlexaImage from "./images/alexa.png";
-import CortanaImage from "./images/cortana.png";
-import SiriImage from "./images/siri.png";
+// import AlexaImage from "./images/alexa.png";
+// import CortanaImage from "./images/cortana.png";
+// import SiriImage from "./images/siri.png";
 
-console.log("AlexaImage : ",AlexaImage);
-console.log("SiriImage : ",SiriImage);
+// console.log("AlexaImage : ",AlexaImage);
+// console.log("SiriImage : ",SiriImage);
 
 
 function App() {
@@ -37,15 +37,24 @@ function App() {
     }]);
 
     const getPaymentFormData = (data) => {
-        setExpenses((prevState) => {
-            return [data, ...prevState];
-        });
+        setExpenses([
+            {
+                id: Math.random().toString(),
+                title: data.title,
+                amount: data.amount,
+                date: new Date(data.date),
+            },
+            ...expenses
+        ])
+        // setExpenses((prevState) => {
+        //     return [data, ...prevState];
+        // });
     };
 
-    const deletePaymentData = (index) => {
-        // const newFilteredArray
-        //  = expenses.filter((item) => item.id === id);
-        // setExpenses(newFilteredArray);
+    const deletePaymentData = (index, id) => {
+        const newFilteredArray
+         = expenses.filter((item) => item.id !== id);
+        setExpenses(newFilteredArray);
 
         // const beforeArray = expenses.slice(0, index);
         // const afterArray = expenses.slice(index + 1);
@@ -62,8 +71,8 @@ function App() {
             ))}
             <NewPayment getPaymentFormData={getPaymentFormData}/>
             <Expenses items={expenses} deletePaymentData={deletePaymentData}/>
-            <img src={AlexaImage} alt="Alexa" style={{ width:400, height:400 }} />
-            <img src={SiriImage} alt="Siri" width={400} height={400}/>
+            {/*<img src={AlexaImage} alt="Alexa" style={{ width:400, height:400 }} />*/}
+            {/*<img src={SiriImage} alt="Siri" width={400} height={400}/>*/}
         </div>
     );
 }

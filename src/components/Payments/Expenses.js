@@ -5,12 +5,13 @@ import Card from './Card';
 import './Expenses.css';
 
 const Expenses = (props) => {
-    // console.log("Expenses",props);
+    console.log("Expenses",props);
     return (
         <Card className="expenses">
             {props.items.map((item, index) => (
             <ExpenseItem
-                key={item.id}
+                key={`${item.id}-${index}`}
+                id={item.id}
                 title={item.title}
                 amount={item.amount}
                 date={item.date}
