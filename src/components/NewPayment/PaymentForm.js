@@ -7,7 +7,7 @@ const PaymentForm = () => {
     const [objectStore, setObjectStore] = React.useState({
         name : '',
         price : 0,
-        toDate : undefined
+        toDate : new Date()
     });
 
     const changeObjectStoreName = (event) => {
@@ -22,13 +22,17 @@ const PaymentForm = () => {
 
     const buttonSubmitHandler = (event) => {
         event.preventDefault();
-        console.log("name", objectStore.name);
-        console.log("price", objectStore.price);
-        console.log("toDate", objectStore.toDate);
+        console.log("objectStore", objectStore);
+        // 초기화
+        setObjectStore({
+            name : '',
+            price : 0,
+            toDate : new Date()
+        });
     }
 
     return (
-        <form>
+        <form onSubmit={buttonSubmitHandler}>
             <div className='new-payment__controls'>
                 <div className='new-payment__control'>
                     <label>이름</label>
