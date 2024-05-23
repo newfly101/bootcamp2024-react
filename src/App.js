@@ -40,7 +40,7 @@ function App() {
             id: '1',
             title: '수건',
             amount: 12.33,
-            date: new Date(2025, 9-1, 14),
+            date: new Date(2025, 9, 2),
     }]);
 
 

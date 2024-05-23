@@ -6,7 +6,7 @@ const ExpenseDate = (props) => {
     // console.log("ExpenseDate:",props);
     const year = props.date instanceof Date ? props.date.getFullYear() : 'Invalid Year';
     const month = props.date instanceof Date ? props.date.getMonth() : 'Invalid Month';
-    const day = props.date instanceof Date ? props.date.getDay() : 'Invalid Month';
+    const day = props.date instanceof Date ? props.date.getDate() : 'Invalid Month';
 
     // console.log("month",month);
     // console.log("day",day);
