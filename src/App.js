@@ -5,7 +5,6 @@ import ToastButton from "./components/ToastButton";
 import NewPayment from "./components/NewPayment/NewPayment";
 import Expenses from "./components/Payments/Expenses";
 import {useState} from "react";
-import PaymentForm from "./components/NewPayment/PaymentForm";
 
 function App() {
     const messageArray = [
@@ -38,11 +37,11 @@ function App() {
         },
     ];
 
-    const [parentObjectState, setParentObjectState] = useState({
-        name : '',
-        price : 0,
-        toDate : new Date()
-    })
+    // const [parentObjectState, setParentObjectState] = useState({
+    //     name : '',
+    //     price : 0,
+    //     toDate : new Date()
+    // })
 
     const getPaymentFormData = (data) => {
         console.log("objectState : ", data);
