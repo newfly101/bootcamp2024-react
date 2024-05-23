@@ -10,8 +10,3 @@ const Toast = ({ message, children }) => {
 };
 
 export default Toast;
-
-const hello = 20;
-const world = 10;
-
-export {hello, world}

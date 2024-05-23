@@ -1,5 +1,5 @@
 import './App.css';
-import Toast, {hello, world} from "./components/Toast";
+import Toast from "./components/Toast";
 import ToastMessage from "./components/ToastMessage";
 import ToastButton from "./components/ToastButton";
 
@@ -17,28 +17,18 @@ function App() {
             title: 'error',
             text: 'Uh oh! Something went terribly wrong!'
         }
-    ]
+    ];
+
+
+
     return (
         <div className="wrapper">
-            {/*{messageArray.map((message, index) => (*/}
-            {/*    <Toast key={index} message={message}>*/}
-            {/*        <ToastMessage message={message}/>*/}
-            {/*        <ToastButton />*/}
-            {/*    </Toast>*/}
-            {/*))}*/}
-            <Toast message={messageArray[0]}>
-                <ToastMessage message={messageArray[0]}/>
-                <ToastButton />
-            </Toast>
-            <Toast message={messageArray[1]}>
-                <ToastMessage message={messageArray[1]}/>
-                <ToastButton />
-            </Toast>
-            <Toast message={messageArray[2]}>
-                <ToastMessage message={messageArray[2]}/>
-                <ToastButton />
-            </Toast>
-            <div>{hello} {world}</div>
+            {messageArray.map((message, index) => (
+                <Toast key={index} message={message}>
+                    <ToastMessage message={message}/>
+                    <ToastButton message={message}/>
+                </Toast>
+            ))}
         </div>
     );
 }

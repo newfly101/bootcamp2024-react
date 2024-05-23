@@ -1,10 +1,14 @@
 import React from 'react';
 import "./Toast.css";
 
-const ToastButton = () => {
+const ToastButton = ({message}) => {
+    const buttonClickHandler = (message) => {
+        console.log(message.title);
+    }
+
     return (
         <div>
-            <button className="toast__button" onClick={() => console.log('event console!')}>Dismiss</button>
+            <button className="toast__button" onClick={() => buttonClickHandler(message)}>Dismiss</button>
         </div>
     );
 };
