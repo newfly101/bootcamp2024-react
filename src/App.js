@@ -22,34 +22,17 @@ function App() {
         }
     ];
 
-    // const expenses = [
-    //     {
-    //         id: '1',
-    //         title: '수건',
-    //         amount: 12.33,
-    //         date: new Date(2025, 8, 14),
-    //     },
-    //     {
-    //         id: '2',
-    //         title: '과자',
-    //         amount: 6.33,
-    //         date: new Date(2024, 5, 14),
-    //     },
-    // ];
     const [expenses, setExpenses] = useState([{
             id: '1',
             title: '수건',
             amount: 12.33,
-            date: new Date(2025, 9, 2),
+            date: new Date(2025, 8-1, 2),
     }]);
 
-
     const getPaymentFormData = (data) => {
-        // expenses.push(data);
         setExpenses((prevState) => {
             return [data, ...prevState];
         });
-        // console.log("expenses : ", expenses); // 배열에 값추가는 되는데 렌더링이 안됨
     };
 
     return (
