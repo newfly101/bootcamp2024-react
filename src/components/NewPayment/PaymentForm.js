@@ -3,27 +3,28 @@ import React from 'react';
 import './PaymentForm.css';
 
 const PaymentForm = () => {
-    const [name, setName] = React.useState('');
-    const [price, setPrice] = React.useState('');
-    const [todate, setTodate] = React.useState('');
 
-    const changeNameHandle = (event) => {
-        console.log(event.target.value);
-        setName(event.target.value);
-    }
-    const changePriceHandle = (event) => {
-        setPrice(event.target.value);
-    }
+    const [objectStore, setObjectStore] = React.useState({
+        name : '',
+        price : 0,
+        toDate : undefined
+    });
 
-    const changeToDateHandle = (event) => {
-        setTodate(event.target.value);
-    }
+    const changeObjectStoreName = (event) => {
+        setObjectStore(prevState => ({...prevState, name: event.target.value}));
+    };
+    const changeObjectStorePrice = (event) => {
+        setObjectStore(prevState => ({...prevState, price: event.target.value}));
+    };
+    const changeObjectStoreToDate = (event) => {
+        setObjectStore(prevState => ({...prevState, toDate: event.target.value}));
+    };
 
     const buttonSubmitHandler = (event) => {
         event.preventDefault();
-        console.log(name);
-        console.log(price);
-        console.log(todate);
+        console.log("name", objectStore.name);
+        console.log("price", objectStore.price);
+        console.log("toDate", objectStore.toDate);
     }
 
     return (
@@ -31,16 +32,16 @@ const PaymentForm = () => {
             <div className='new-payment__controls'>
                 <div className='new-payment__control'>
                     <label>이름</label>
-                    <input type='text'  onChange={changeNameHandle} />
+                    <input type='text' value={objectStore.name} onChange={changeObjectStoreName} />
                 </div>
                 <div className='new-payment__control'>
                     <label>금액</label>
-                    <input type='number' min='0.01' step='0.01' onChange={changePriceHandle} />
+                    <input type='number' min='0.01' step='0.01' value={objectStore.price} onChange={changeObjectStorePrice} />
                 </div>
                 <div className='new-payment__control'>
                     <label>날짜</label>
-                    <input type='date' min='2019-01-01' max='2024-12-31'
-                           onChange={changeToDateHandle}/>
+                    <input type='date' min='2019-01-01' max='2024-12-31' value={objectStore.toDate}
+                           onChange={changeObjectStoreToDate}/>
                 </div>
             </div>
             <div className='new-payment__actions'>
