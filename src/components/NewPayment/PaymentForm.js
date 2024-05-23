@@ -2,29 +2,30 @@ import React from 'react';
 
 import './PaymentForm.css';
 
-const PaymentForm = () => {
-
-    const [objectStore, setObjectStore] = React.useState({
+const PaymentForm = ({getPaymentFormData}) => {
+    const [objectState, setObjectState] = React.useState({
         name : '',
         price : 0,
         toDate : new Date()
     });
 
-    const changeObjectStoreName = (event) => {
-        setObjectStore(prevState => ({...prevState, name: event.target.value}));
+    const changeObjectStateName = (event) => {
+        setObjectState(prevState => ({...prevState, name: event.target.value}));
     };
-    const changeObjectStorePrice = (event) => {
-        setObjectStore(prevState => ({...prevState, price: event.target.value}));
+    const changeObjectStatePrice = (event) => {
+        setObjectState(prevState => ({...prevState, price: event.target.value}));
     };
-    const changeObjectStoreToDate = (event) => {
-        setObjectStore(prevState => ({...prevState, toDate: event.target.value}));
+    const changeObjectStateToDate = (event) => {
+        setObjectState(prevState => ({...prevState, toDate: event.target.value}));
     };
 
     const buttonSubmitHandler = (event) => {
         event.preventDefault();
-        console.log("objectStore", objectStore);
+
+        getPaymentFormData(objectState);
+        console.log("objectState", objectState);
         // 초기화
-        setObjectStore({
+        setObjectState({
             name : '',
             price : 0,
             toDate : new Date()
@@ -36,16 +37,16 @@ const PaymentForm = () => {
             <div className='new-payment__controls'>
                 <div className='new-payment__control'>
                     <label>이름</label>
-                    <input type='text' value={objectStore.name} onChange={changeObjectStoreName} />
+                    <input type='text' value={objectState.name} onChange={changeObjectStateName} />
                 </div>
                 <div className='new-payment__control'>
                     <label>금액</label>
-                    <input type='number' min='0.01' step='0.01' value={objectStore.price} onChange={changeObjectStorePrice} />
+                    <input type='number' min='0.01' step='0.01' value={objectState.price} onChange={changeObjectStatePrice} />
                 </div>
                 <div className='new-payment__control'>
                     <label>날짜</label>
-                    <input type='date' min='2019-01-01' max='2024-12-31' value={objectStore.toDate}
-                           onChange={changeObjectStoreToDate}/>
+                    <input type='date' min='2019-01-01' max='2024-12-31' value={objectState.toDate}
+                           onChange={changeObjectStateToDate}/>
                 </div>
             </div>
             <div className='new-payment__actions'>
