@@ -3,6 +3,7 @@ import Toast from "./components/Toast";
 import ToastMessage from "./components/ToastMessage";
 import ToastButton from "./components/ToastButton";
 import NewPayment from "./components/NewPayment/NewPayment";
+import Expenses from "./components/Payments/Expenses";
 
 function App() {
     const messageArray = [
@@ -20,6 +21,21 @@ function App() {
         }
     ];
 
+    const expenses = [
+        {
+            id: '1',
+            title: '수건',
+            amount: 12.33,
+            date: new Date(2025, 8, 14),
+        },
+        {
+            id: '1',
+            title: '수건',
+            amount: 12.33,
+            date: new Date(2025, 8, 14),
+        },
+    ];
+
     return (
         <div className="wrapper">
             {messageArray.map((message, index) => (
@@ -29,6 +45,7 @@ function App() {
                 </Toast>
             ))}
             <NewPayment />
+            <Expenses items={expenses} />
         </div>
     );
 }
