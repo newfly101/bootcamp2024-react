@@ -5,7 +5,7 @@ import Card from './Card';
 import './Expenses.css';
 
 const Expenses = (props) => {
-    console.log("Expenses",props.items);
+    console.log("Expenses",props);
     return (
         <Card className="expenses">
             {props.items.map((item, index) => (
