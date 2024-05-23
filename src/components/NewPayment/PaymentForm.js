@@ -23,7 +23,7 @@ const PaymentForm = ({getPaymentFormData}) => {
         event.preventDefault();
 
         getPaymentFormData(objectState);
-        console.log("objectState", objectState);
+        // console.log("objectState", objectState);
         // 초기화
         setObjectState({
             name : '',

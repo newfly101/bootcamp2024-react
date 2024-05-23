@@ -56,8 +56,7 @@ function App() {
                     <ToastButton message={message}/>
                 </Toast>
             ))}
-            {/*<NewPayment />*/}
-            <PaymentForm getPaymentFormData={getPaymentFormData}/>
+            <NewPayment getPaymentFormData={getPaymentFormData}/>
             <Expenses items={expenses} />
         </div>
     );
