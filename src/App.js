@@ -4,7 +4,6 @@ import ToastMessage from "./components/ToastMessage";
 import ToastButton from "./components/ToastButton";
 import NewPayment from "./components/NewPayment/NewPayment";
 import Expenses from "./components/Payments/Expenses";
-import {useState} from "react";
 
 function App() {
     const messageArray = [
