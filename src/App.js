@@ -2,7 +2,7 @@ import './App.css';
 import Toast from "./components/Toast";
 import ToastMessage from "./components/ToastMessage";
 import ToastButton from "./components/ToastButton";
-import {useState} from "react";
+import NewPayment from "./components/NewPayment/NewPayment";
 
 function App() {
     const messageArray = [
@@ -20,9 +20,6 @@ function App() {
         }
     ];
 
-    // 부모 component에서 state를 마구잡이로 쓰면 자식 component에서 렌더링이 계속 변하기 때문에 무거워짐
-    // const [title, setTitle] = useState('title');
-
     return (
         <div className="wrapper">
             {messageArray.map((message, index) => (
@@ -31,6 +28,7 @@ function App() {
                     <ToastButton message={message}/>
                 </Toast>
             ))}
+            <NewPayment />
         </div>
     );
 }
