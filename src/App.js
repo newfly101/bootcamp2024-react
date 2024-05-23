@@ -4,6 +4,7 @@ import ToastMessage from "./components/ToastMessage";
 import ToastButton from "./components/ToastButton";
 import NewPayment from "./components/NewPayment/NewPayment";
 import Expenses from "./components/Payments/Expenses";
+import {useState} from "react";
 
 function App() {
     const messageArray = [
@@ -36,15 +37,19 @@ function App() {
         },
     ];
 
+
+
     // const [parentObjectState, setParentObjectState] = useState({
     //     name : '',
     //     price : 0,
     //     toDate : new Date()
-    // })
+    // });
 
     const getPaymentFormData = (data) => {
+        expenses.push(data);
         console.log("objectState : ", data);
-    }
+        console.log("expenses : ", expenses); // 배열에 값추가는 되는데 렌더링이 안됨
+    };
 
     return (
         <div className="wrapper">
