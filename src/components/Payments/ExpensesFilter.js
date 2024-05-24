@@ -14,10 +14,9 @@ const ExpensesFilter = (props) => {
             <div className='expenses-filter__control'>
                 <label>Filter by year</label>
                 <select value={props.selected} onChange={dropdownChangeHandler}>
-                    <option value='all'>all value</option>
                     {props.options.map((option, index) => (
                         <option key={index} value={option}>
-                            {option}
+                            {option==='all' ? '모두 보기' : option}
                         </option>
                     ))}
                 </select>

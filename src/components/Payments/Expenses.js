@@ -7,19 +7,15 @@ import ExpensesFilter from "./ExpensesFilter";
 
 const Expenses = (props) => {
     const [filteredYear, setFilteredYear] = React.useState('all');
-    const [getAllFilter, setFilteredGetAllFilter] = React.useState([
-        'all'
-    ]);
+    const [getAllFilter, setFilteredGetAllFilter] = React.useState([]);
 
     const filterChangeHandler = (selectedYear) => {
         setFilteredYear(selectedYear);
     };
 
+    // 모두 보기를 위해 'all' 을 삽입 배열로 설정
     const getAllFilteredYears = () => {
-        let uniqueYears = [...new Set(props.items.map(item =>
-            item.date.getFullYear().toString()))];
-        // console.log("uniqueYears",uniqueYears);
-
+        let uniqueYears = ['all', ...new Set(props.items.map(item => item.date.getFullYear().toString()))];
         setFilteredGetAllFilter(uniqueYears);
     };
 
@@ -27,13 +23,12 @@ const Expenses = (props) => {
         getAllFilteredYears();
     }, [props.items]);
 
-
-
     const filteredExpenses = props.items.filter((expense) => {
-        // console.log("filteredExpenses : each : ",expense);
+        // selected='all' 이면 모든 리스트를 보여줘야 하기 때문에 true return
         if (filteredYear === 'all') {
          return true;
         } else {
+            // filter로 걸러진 리스트만 보여줌
             return expense.date.getFullYear().toString() === filteredYear;
         }
     });
