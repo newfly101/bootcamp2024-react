@@ -8,15 +8,18 @@ const ExpensesFilter = (props) => {
         props.onChange(event.target.value);
     };
 
+    // console.log("$$$$$$$$$$$",props.options);
     return (
         <div className='expenses-filter'>
             <div className='expenses-filter__control'>
                 <label>Filter by year</label>
                 <select value={props.selected} onChange={dropdownChangeHandler}>
                     <option value='all'>all value</option>
-                    <option value='2022'>2022</option>
-                    <option value='2021'>2021</option>
-                    <option value='2020'>2020</option>
+                    {props.options.map((option, index) => (
+                        <option key={index} value={option}>
+                            {option}
+                        </option>
+                    ))}
                 </select>
             </div>
         </div>
