@@ -33,8 +33,15 @@ function App() {
             id: Math.random().toString(),
             title: '수건',
             amount: 12.33,
-            date: new Date(2025, 8-1, 2),
-    }]);
+            date: new Date(2022, 8-1, 2),
+        },
+        {
+            id: Math.random().toString(),
+            title: '과자',
+            amount: 6.4,
+            date: new Date(2023, 8-1, 2),
+        },
+    ]);
 
     const getPaymentFormData = (data) => {
         setExpenses([
