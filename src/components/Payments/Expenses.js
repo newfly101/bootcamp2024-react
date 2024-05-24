@@ -13,26 +13,25 @@ const Expenses = (props) => {
     }
 
     const filteredExpenses = props.items.filter((expense) => {
-        // return true;
         return expense.date.getFullYear().toString() === filteredYear;
     });
 
-    let expensesContent = <p>값이 없습니다.</p>
-    if (filteredExpenses.length > 0) {
-        expensesContent = filteredExpenses.map((item, index) => (
-            <ExpenseItem
-                key={`${item.id}-${index}`}
-                id={item.id}
-                index={index}
-                title={item.title}
-                amount={item.amount}
-                date={item.date}
-                deletePaymentData={props.deletePaymentData}
-            />
-        ))
-    }
+    // let expensesContent = <p>값이 없습니다.</p>
+    // if (filteredExpenses.length > 0) {
+    //     expensesContent = filteredExpenses.map((item, index) => (
+    //         <ExpenseItem
+    //             key={`${item.id}-${index}`}
+    //             id={item.id}
+    //             index={index}
+    //             title={item.title}
+    //             amount={item.amount}
+    //             date={item.date}
+    //             deletePaymentData={props.deletePaymentData}
+    //         />
+    //     ))
+    // }
 
-    console.log("filteredExpenses : ",filteredExpenses);
+    // console.log("filteredExpenses : ",filteredExpenses);
 
     // console.log("Expenses",props);
     return (
@@ -41,7 +40,18 @@ const Expenses = (props) => {
                 selected={filteredYear}
                 onChange={filterChangeHandler}
             />
-            {expensesContent}
+            {filteredExpenses.length > 0 ?
+                filteredExpenses.map((item, index) => (
+                    <ExpenseItem
+                        key={`${item.id}-${index}`}
+                        id={item.id}
+                        index={index}
+                        title={item.title}
+                        amount={item.amount}
+                        date={item.date}
+                        deletePaymentData={props.deletePaymentData}
+                    />
+                )) : <p>값이 없습니다.</p>}
         </Card>
     );
 }
