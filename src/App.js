@@ -64,6 +64,8 @@ function App() {
         setExpenses([...beforeArray, ...afterArray]);
     }
 
+
+
     return (
         <div className="wrapper">
             {messageArray.map((message, index) => (
