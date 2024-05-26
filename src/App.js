@@ -5,6 +5,7 @@ import ToastButton from "./components/ToastButton";
 import NewPayment from "./components/NewPayment/NewPayment";
 import Expenses from "./components/Payments/Expenses";
 import {useState} from "react";
+import StyleView from "./components/CourseGoals/StyleView";
 // import AlexaImage from "./images/alexa.png";
 // import CortanaImage from "./images/cortana.png";
 // import SiriImage from "./images/siri.png";
@@ -28,7 +29,6 @@ function App() {
             text: 'Uh oh! Something went terribly wrong!'
         }
     ];
-
     const [expenses, setExpenses] = useState([{
             id: Math.random().toString(),
             title: '수건',
@@ -42,7 +42,6 @@ function App() {
             date: new Date(2023, 8-1, 2),
         },
     ]);
-
     const getPaymentFormData = (data) => {
         setExpenses([
             {
@@ -53,11 +52,7 @@ function App() {
             },
             ...expenses
         ])
-        // setExpenses((prevState) => {
-        //     return [data, ...prevState];
-        // });
     };
-
     const deletePaymentData = (index, id) => {
         // const newFilteredArray
         //  = expenses.filter((item) => item.id !== id);
@@ -73,6 +68,7 @@ function App() {
 
 
 
+
     return (
         <div className="wrapper">
             {messageArray.map((message, index) => (
@@ -85,6 +81,7 @@ function App() {
             <Expenses items={expenses} deletePaymentData={deletePaymentData}/>
             {/*<img src={AlexaImage} alt="Alexa" style={{ width:400, height:400 }} />*/}
             {/*<img src={SiriImage} alt="Siri" width={400} height={400}/>*/}
+            <StyleView />
         </div>
     );
 }
