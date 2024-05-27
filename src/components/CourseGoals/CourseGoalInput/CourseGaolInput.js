@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import Button from "../UI/Button/Button";
+import "./CourseGaolInput.css";
 
 const CourseGaolInput = (props) => {
     const [enteredValue, setEnteredValue] = useState('');
@@ -7,6 +8,8 @@ const CourseGaolInput = (props) => {
     const goalInputChangeHandler = event => {
         if (event.target.value.trim().length !== 0) {
             setIsValid(true);
+        } else {
+            setIsValid(false);
         }
         setEnteredValue(event.target.value);
     };
@@ -20,18 +23,15 @@ const CourseGaolInput = (props) => {
         }
         props.onAddGoal(enteredValue);
         setEnteredValue(""); // 초기화
-        setIsValid(true);
     };
 
-    console.log("enteredValue : ",enteredValue.length);
+    console.log("enteredValue : ",enteredValue.length, "isValid", isValid);
 
     return (
         <form onSubmit={formSubmitHandler}>
-            <div className="form-control">
+            <div className={`form-control ${!isValid && enteredValue.length !== 0 && 'invalid'}`}>
                 <label>목표</label>
                 <input type="text" onChange={goalInputChangeHandler} value={enteredValue}
-                       style={{backgroundColor: isValid ? "transparent" : enteredValue.length === 0 ? "transparent" : 'red',
-                               borderColor: isValid ? '#ccc' : enteredValue.length === 0 ? '#ccc' : 'red'}}
                 />
             </div>
             <Button type="submit">목표 추가하기</Button>
