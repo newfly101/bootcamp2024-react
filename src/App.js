@@ -111,18 +111,18 @@ function App() {
 
     return (
         <div className="wrapper">
-            {messageArray.map((message, index) => (
-                <Toast key={index} message={message}>
-                    <ToastMessage message={message}/>
-                    <ToastButton message={message}/>
-                </Toast>
-            ))}
-            <NewPayment getPaymentFormData={getPaymentFormData}/>
-            <Expenses items={expenses} deletePaymentData={deletePaymentData}/>
+            {/*{messageArray.map((message, index) => (*/}
+            {/*    <Toast key={index} message={message}>*/}
+            {/*        <ToastMessage message={message}/>*/}
+            {/*        <ToastButton message={message}/>*/}
+            {/*    </Toast>*/}
+            {/*))}*/}
+            {/*<NewPayment getPaymentFormData={getPaymentFormData}/>*/}
+            {/*<Expenses items={expenses} deletePaymentData={deletePaymentData}/>*/}
             {/*<img src={AlexaImage} alt="Alexa" style={{ width:400, height:400 }} />*/}
             {/*<img src={SiriImage} alt="Siri" width={400} height={400}/>*/}
-            <StyleView />
-            <DropDown options={options}/>
+            {/*<StyleView />*/}
+            {/*<DropDown options={options}/>*/}
             <SortableTable data={data} config={config} keyFn={keyFn} />
         </div>
     );
