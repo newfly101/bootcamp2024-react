@@ -7,7 +7,7 @@ const DropDown = ({options}) => {
     console.log(selectedOption);
     const handleSelect = (option) => {
         setSelectedOption(option);
-
+        setIsOpen(prevState => !prevState);
     }
     const handleClick = () => {
         setIsOpen(prevState => !prevState);
