@@ -38,7 +38,7 @@ const CourseGaolInput = (props) => {
             <FormControl>
                 <FormControlLabel />
                 <FormControlInput type="text" onChange={goalInputChangeHandler} value={enteredValue}
-                inValid={isValid}/>
+                isValid={isValid}/>
             </FormControl>
             <Button type="submit">목표 추가하기</Button>
         </form>
@@ -71,7 +71,7 @@ const FormControlInput = styled.input`
         border-color: blue;
     }
     
-    ${props => !props.inValid && props.value.length !== 0 && `
+    ${props => !props.isValid && props.value.length !== 0 && `
         background: salmon;
         border: 1px solid red;
     `}
