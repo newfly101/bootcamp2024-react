@@ -6,6 +6,7 @@ import NewPayment from "./components/NewPayment/NewPayment";
 import Expenses from "./components/Payments/Expenses";
 import {useState} from "react";
 import StyleView from "./components/CourseGoals/StyleView";
+import DropDown from "./components/DropDown";
 // import AlexaImage from "./images/alexa.png";
 // import CortanaImage from "./images/cortana.png";
 // import SiriImage from "./images/siri.png";
@@ -66,7 +67,11 @@ function App() {
         setExpenses([...beforeArray, ...afterArray]);
     }
 
-
+    const options = [
+        {label:"빨강", value:"red" },
+        {label:"녹색", value:"green" },
+        {label:"파랑", value:"blue" },
+    ]
 
 
     return (
@@ -82,6 +87,7 @@ function App() {
             {/*<img src={AlexaImage} alt="Alexa" style={{ width:400, height:400 }} />*/}
             {/*<img src={SiriImage} alt="Siri" width={400} height={400}/>*/}
             <StyleView />
+            <DropDown options={options}/>
         </div>
     );
 }
