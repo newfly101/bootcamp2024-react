@@ -30,8 +30,8 @@ const ModalOverlay = (props) => {
 const ErrorModal = (props) => {
     return (
         <div>
-            <Backdrop props={props} />
-            <ModalOverlay props={props} />
+            <Backdrop onConfirm={props.onConfirm} />
+            <ModalOverlay title={props.title} message={props.message} onConfirm={props.onConfirm}/>
         </div>
     );
 };
