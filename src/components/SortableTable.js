@@ -52,6 +52,17 @@ function SortableTable(props) {
         const { sortValue } = config.find((column) => column.label === sortBy);
         sortedData = [...data].sort((a, b) => {
             // TODO - 정렬된 데이터로 바꿔 끼우는 부분 들어갈 comparator 함수
+            const valueA = sortValue(a);
+            const valueB = sortValue(b);
+
+            const reverseOrder = sortOrder === 'asc' ? 1 : -1;
+
+            if (typeof valueA === 'string') {
+                return valueA.localeCompare(valueB) * reverseOrder;
+            } else {
+                return (valueA - valueB) * reverseOrder;
+                // return valueA > reverseOrder ? -1 : reverseOrder;
+            }
         });
     }
 
