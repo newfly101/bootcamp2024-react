@@ -30,8 +30,8 @@ const ModalOverlay = (props) => {
 const ErrorModal = (props) => {
     return (
         <div>
-            <Backdrop/>
-            <ModalOverlay/>
+            <Backdrop props={props} />
+            <ModalOverlay props={props} />
         </div>
     );
 };
