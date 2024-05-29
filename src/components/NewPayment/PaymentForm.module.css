@@ -64,6 +64,6 @@
     text-align: right;
 }
 
-.isTrue {
-    border : 1px solid red;
+.isTrue input{
+    background : salmon;
 }
