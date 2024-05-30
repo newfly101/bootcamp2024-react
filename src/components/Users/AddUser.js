@@ -6,8 +6,6 @@ import ErrorModal from '../UI/ErrorModal';
 import classes from './AddUser.module.css';
 
 const AddUser = (props) => {
-    // const [enteredUsername, setEnteredUsername] = useState('');
-    // const [enteredAge, setEnteredAge] = useState('');
     const [error, setError] = useState();
 
     const nameInputRef = useRef();
@@ -36,15 +34,10 @@ const AddUser = (props) => {
             return;
         }
         props.onAddUser(enteredName, enteredUserAge);
+        // 초기화 작업
+        nameInputRef.current.value = '';
+        ageInputRef.current.value = '';
     };
-
-    // const usernameChangeHandler = (event) => {
-    //     setEnteredUsername(event.target.value);
-    // };
-    //
-    // const ageChangeHandler = (event) => {
-    //     setEnteredAge(event.target.value);
-    // };
 
     const errorHandler = () => {
         setError(null);
