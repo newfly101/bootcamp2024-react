@@ -13,10 +13,18 @@ const Login = (props) => {
 
     // 중복된 setFormIsValid를 useEffect를 이용해서 해당 값이 변경될 때 check하도록 함
     useEffect(() => {
-        setFormIsValid(
-            enteredEmail.includes('@') && enteredPassword.trim().length > 6
-        );
-        console.log("length enteredPassword : ", enteredPassword.length);
+        const identifier = setTimeout(() => {
+            console.log("check validity");
+            setFormIsValid(
+                enteredEmail.includes('@') && enteredPassword.trim().length > 6
+            );
+        }, 500);
+        // cleanUp function
+        return () => {
+            console.log("clean up");
+            clearTimeout(identifier);
+        }
+        console.log("length enteredPassword : ", enteredPassword.trim().length);
     }, [enteredEmail, enteredPassword]);
 
     const emailChangeHandler = (event) => {
