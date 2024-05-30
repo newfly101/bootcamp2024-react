@@ -8,7 +8,7 @@ const Login = (props) => {
     const [enteredEmail, setEnteredEmail] = useState('');
     const [emailIsValid, setEmailIsValid] = useState();
     const [enteredPassword, setEnteredPassword] = useState('');
-    const [passwordIsValid, setPasswordIsValid] = useState();
+    const [passwordIsValid, setPasswordIsValid] = useState(false);
     const [formIsValid, setFormIsValid] = useState(false);
 
     // 중복된 setFormIsValid를 useEffect를 이용해서 해당 값이 변경될 때 check하도록 함
@@ -16,6 +16,7 @@ const Login = (props) => {
         setFormIsValid(
             enteredEmail.includes('@') && enteredPassword.trim().length > 6
         );
+        console.log("length enteredPassword : ", enteredPassword.length);
     }, [enteredEmail, enteredPassword]);
 
     const emailChangeHandler = (event) => {
