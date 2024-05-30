@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useRef, useState} from 'react';
 
 import Card from '../UI/Card';
 import Button from '../UI/Button';
@@ -10,8 +10,15 @@ const AddUser = (props) => {
     const [enteredAge, setEnteredAge] = useState('');
     const [error, setError] = useState();
 
+    const nameInputRef = useRef();
+    const ageInputRef = useRef();
+
     const addUserHandler = (event) => {
         event.preventDefault();
+
+        console.log("nameInputRef", nameInputRef.current.value);
+        console.log("ageInputRef", ageInputRef.current.value);
+
         if (enteredUsername.trim().length === 0 || enteredAge.trim().length === 0) {
             setError({
                 title: '유효하지 않은 입력값',
@@ -58,15 +65,17 @@ const AddUser = (props) => {
                     <input
                         id="username"
                         type="text"
-                        value={enteredUsername}
-                        onChange={usernameChangeHandler}
+                        // value={enteredUsername}
+                        // onChange={usernameChangeHandler}
+                        ref={nameInputRef}
                     />
                     <label htmlFor="age">나이</label>
                     <input
                         id="age"
                         type="number"
-                        value={enteredAge}
-                        onChange={ageChangeHandler}
+                        // value={enteredAge}
+                        // onChange={ageChangeHandler}
+                        ref={ageInputRef}
                     />
                     <Button type="submit">사용자 추가</Button>
                 </form>
