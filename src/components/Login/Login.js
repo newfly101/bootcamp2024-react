@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useReducer, useRef, useState} from 'react';
+import React, {useCallback, useContext, useEffect, useReducer, useRef, useState} from 'react';
 
 import Card from '../UI/Card';
 import classes from './Login.module.css';
@@ -133,7 +133,7 @@ const Login = () => {
 
     };
 
-    const foo = () => {};
+    const foo = useCallback(() => {}, []);
     console.log("Parent Component Rendered");
 
     return (
