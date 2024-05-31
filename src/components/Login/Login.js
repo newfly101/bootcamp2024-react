@@ -133,6 +133,7 @@ const Login = () => {
 
     };
 
+    const foo = () => {};
     console.log("Parent Component Rendered");
 
     return (
@@ -163,7 +164,7 @@ const Login = () => {
                     </Button>
                 </div>
             </form>
-            <DummyText text={"Alex"}/>
+            <DummyText text={"Alex"} func={foo}/>
             <button onClick={() => setText('Brian')}></button>
         </Card>
     );
