@@ -1,20 +1,26 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import NewsItem from '../NewsItem';
 
 const NewsList = () => {
     // newsAPI = https://newsapi.org/
 
     const [news, setNews] = React.useState([]);
-    const getNewsList = () => {
-        fetch('https://newsapi.org/v2/everything?q=tesla&from=2024-04-30&sortBy=publishedAt&apiKey=dc8174e9293f434e9cdd22c03b387d57')
-            .then(res => res.json())
-            .then((data) => {
-                // console.log(data);
-                setNews(data.articles);
-            });
+    const getNewsList = async () => {
+        const response = await fetch('https://newsapi.org/v2/everything?q=tesla&from=2024-04-30&sortBy=publishedAt&apiKey=dc8174e9293f434e9cdd22c03b387d57');
+        const data = await response.json();
+        console.log(data);
+        setNews(data.articles);
+            // .then(res => res.json())
+            // .then((data) => {
+            //     // console.log(data);
+            //     setNews(data.articles);
+            // });
     };
+    // useEffect를 사용하지 않으면, 계속 매초마다 data를 get해오기 때문에 따로 처리 진행
+    useEffect(() => {
+        getNewsList();
+    }, []);
 
-    getNewsList();
     const dummy = [
         {
             "source": {
