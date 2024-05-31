@@ -5,11 +5,14 @@ const NewsList = () => {
     // newsAPI = https://newsapi.org/
 
     const [news, setNews] = React.useState([]);
+    const [isLoading, setIsLoading] = React.useState(false);
     const getNewsList = async () => {
+        setIsLoading(true);
         const response = await fetch('https://newsapi.org/v2/everything?q=tesla&from=2024-04-30&sortBy=publishedAt&apiKey=dc8174e9293f434e9cdd22c03b387d57');
         const data = await response.json();
         console.log(data);
         setNews(data.articles);
+        setIsLoading(false);
             // .then(res => res.json())
             // .then((data) => {
             //     // console.log(data);
@@ -64,7 +67,11 @@ const NewsList = () => {
     ]
     return (
         <div>
-            {news.map((news, index) => <NewsItem key={index} {...news} />)}
+            {!isLoading ?
+                news.map((news, index) => <NewsItem key={index} {...news} />)
+                :
+                <p>로딩중입니다.</p>
+            }
         </div>
     );
 };
