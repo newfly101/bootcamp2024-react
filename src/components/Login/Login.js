@@ -50,7 +50,8 @@ const passwordReducer = (state, action) => {
     }
 }
 
-const Login = (props) => {
+const Login = () => {
+    const context = useContext(AuthContext);
     const [emailState, dispatchEmail] = useReducer(emailReducer, {
         // email의 초기값 세팅
         value : '',
@@ -61,26 +62,6 @@ const Login = (props) => {
         isValid: null,
     });
     const [formIsValid, setFormIsValid] = useState(false);
-
-    const context = useContext(AuthContext);
-
-    // 중복된 setFormIsValid를 useEffect를 이용해서 해당 값이 변경될 때 check하도록 함
-    // useEffect(() => {
-    //     const identifier = setTimeout(() => {
-    //         console.log("check validity");
-    //         setFormIsValid(
-    //             emailState.value.includes('@') && passwordState.value.trim().length > 6
-    //         );
-    //     }, 500);
-    //     // cleanUp function
-    //
-    //     console.log(emailState, passwordState);
-    //     console.log("formIsValid",formIsValid);
-    //     return () => {
-    //         console.log("clean up");
-    //         clearTimeout(identifier);
-    //     }
-    // }, [emailState.value, passwordState.value]);
 
     useEffect(() => {
         console.log("EFFECT RUNNING");
