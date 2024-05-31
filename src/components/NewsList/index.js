@@ -2,6 +2,19 @@ import React from 'react';
 import NewsItem from '../NewsItem';
 
 const NewsList = () => {
+    // newsAPI = https://newsapi.org/
+
+    const [news, setNews] = React.useState([]);
+    const getNewsList = () => {
+        fetch('https://newsapi.org/v2/everything?q=tesla&from=2024-04-30&sortBy=publishedAt&apiKey=dc8174e9293f434e9cdd22c03b387d57')
+            .then(res => res.json())
+            .then((data) => {
+                // console.log(data);
+                setNews(data.articles);
+            });
+    };
+
+    getNewsList();
     const dummy = [
         {
             "source": {
@@ -45,7 +58,7 @@ const NewsList = () => {
     ]
     return (
         <div>
-            {dummy.map(news => <NewsItem {...news} />)}
+            {news.map((news, index) => <NewsItem key={index} {...news} />)}
         </div>
     );
 };
