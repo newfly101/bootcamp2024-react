@@ -6,6 +6,7 @@ import Button from '../UI/Button';
 import AuthContext from "../../context/AuthContext";
 import authContext from "../../context/AuthContext";
 import Input from "../../Input/Input";
+import DummyText from "../../Input/DummyText";
 
 const emailReducer = (state, action) => {
     // 값이 바뀌는 경우 setEnteredEmail
@@ -71,6 +72,7 @@ const Login = () => {
     const emailInputRef = useRef();
     const passwordInputRef = useRef();
 
+    const [text, setText] = useState('Alex');
     // 중복된 setFormIsValid를 useEffect를 이용해서 해당 값이 변경될 때 check하도록 함
     useEffect(() => {
         const identifier = setTimeout(() => {
@@ -131,6 +133,8 @@ const Login = () => {
 
     };
 
+    console.log("Parent Component Rendered");
+
     return (
         <Card className={classes.login}>
             <form onSubmit={submitHandler}>
@@ -159,6 +163,8 @@ const Login = () => {
                     </Button>
                 </div>
             </form>
+            <DummyText text={"Alex"}/>
+            <button onClick={() => setText('Brian')}></button>
         </Card>
     );
 };
