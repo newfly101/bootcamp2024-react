@@ -5,11 +5,48 @@ import classes from './Login.module.css';
 import Button from '../UI/Button';
 
 const emailReducer = (state, action) => {
-
+    // 값이 바뀌는 경우 setEnteredEmail
+    if (action.type === 'USER_INPUT') {
+        console.log("email", state, action);
+        return {
+            value: action.value,
+            isValid: action.value.includes('@') && action.value.trim().length > 0,
+        }
+    }
+    // 유효성 검사를 해야 하는 경우, setEmailIsValid
+    if(action.type === 'INPUT_BLUR') {
+        console.log("email", state, action);
+        return {
+            value: state.value,
+            isValid: state.value.includes('@') && state.value.trim().length > 0,
+        }
+    }
+    return {
+        value: '',
+        isValid: null
+    }
 }
 
 const passwordReducer = (state, action) => {
-
+    if (action.type === "USER_INPUT") {
+        console.log("password", state, action);
+        return {
+            value: action.value,
+            isValid: action.value.trim().length > 6,
+        }
+    }
+    // 유효성 검사를 해야 하는 경우, setPasswordIsValid
+    if(action.type === "INPUT_BLUR") {
+        console.log("password", state, action);
+        return {
+            value: state.value,
+            isValid: state.value.trim().length > 6,
+        }
+    }
+    return {
+        value: '',
+        isValid: null
+    }
 }
 
 const Login = (props) => {
@@ -25,39 +62,63 @@ const Login = (props) => {
     const [formIsValid, setFormIsValid] = useState(false);
 
     // 중복된 setFormIsValid를 useEffect를 이용해서 해당 값이 변경될 때 check하도록 함
+    // useEffect(() => {
+    //     const identifier = setTimeout(() => {
+    //         console.log("check validity");
+    //         setFormIsValid(
+    //             emailState.value.includes('@') && passwordState.value.trim().length > 6
+    //         );
+    //     }, 500);
+    //     // cleanUp function
+    //
+    //     console.log(emailState, passwordState);
+    //     console.log("formIsValid",formIsValid);
+    //     return () => {
+    //         console.log("clean up");
+    //         clearTimeout(identifier);
+    //     }
+    // }, [emailState.value, passwordState.value]);
+
     useEffect(() => {
-        const identifier = setTimeout(() => {
-            console.log("check validity");
-            setFormIsValid(
-                emailState.value.includes('@') && passwordState.value.trim().length > 6
-            );
-        }, 500);
-        // cleanUp function
+        console.log("EFFECT RUNNING");
+
         return () => {
-            console.log("clean up");
-            clearTimeout(identifier);
+            console.log("EFFECT CLEANUP");
         }
-        console.log("length passwordState.value : ", passwordState.value.trim().length);
-    }, [emailState.value, passwordState.value]);
+    }, []);
 
     const emailChangeHandler = (event) => {
-        // setemailState.value(event.target.value);
+        dispatchEmail({type: 'USER_INPUT', value: event.target.value});
+
+        setFormIsValid(
+            emailState.isValid && passwordState.isValid
+        );
+        // validateEmailHandler();
     };
 
     const passwordChangeHandler = (event) => {
-        // setpasswordState.value(event.target.value);
+        dispatchPassword({type: 'USER_INPUT', value: event.target.value});
+
+        setFormIsValid(
+            emailState.isValid && passwordState.isValid
+        );
+
+        // validatePasswordHandler();
     };
 
     const validateEmailHandler = () => {
-        // setemailState.isValid(emailState.value.includes('@'));
+        console.log("emailState : ", emailState);
+        dispatchEmail({type: 'INPUT_BLUR'});
     };
 
     const validatePasswordHandler = () => {
-        // setpasswordState.isValid(passwordState.value.trim().length > 6);
+        console.log("passwordState : ", passwordState);
+        dispatchPassword({type: 'INPUT_BLUR'});
     };
 
     const submitHandler = (event) => {
         event.preventDefault();
+        console.log("formIsValid : ",formIsValid)
         props.onLogin(emailState.value, passwordState.value);
     };
 
