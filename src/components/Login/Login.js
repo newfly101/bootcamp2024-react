@@ -5,6 +5,7 @@ import classes from './Login.module.css';
 import Button from '../UI/Button';
 import AuthContext from "../../context/AuthContext";
 import authContext from "../../context/AuthContext";
+import Input from "../../Input/Input";
 
 const emailReducer = (state, action) => {
     // 값이 바뀌는 경우 setEnteredEmail
@@ -133,36 +134,24 @@ const Login = () => {
     return (
         <Card className={classes.login}>
             <form onSubmit={submitHandler}>
-                <div
-                    className={`${classes.control} ${
-                        emailState.isValid === false ? classes.invalid : ''
-                    }`}
-                >
-                    <label htmlFor="email">이메일</label>
-                    <input
-                        type="email"
-                        id="email"
-                        value={emailState.value}
-                        onChange={emailChangeHandler}
-                        onBlur={validateEmailHandler}
-                        ref={emailInputRef}
-                    />
-                </div>
-                <div
-                    className={`${classes.control} ${
-                        passwordState.isValid === false ? classes.invalid : ''
-                    }`}
-                >
-                    <label htmlFor="password">비밀번호</label>
-                    <input
-                        type="password"
-                        id="password"
-                        value={passwordState.value}
-                        onChange={passwordChangeHandler}
-                        onBlur={validatePasswordHandler}
-                        ref={passwordInputRef}
-                    />
-                </div>
+                <Input
+                    isValid={emailState.isValid}
+                    type="email"
+                    label="이메일"
+                    value={emailState.value}
+                    onChange={emailChangeHandler}
+                    onBlur={validateEmailHandler}
+                    ref={emailInputRef}
+                />
+                <Input
+                    isValid={passwordState.isValid}
+                    type="password"
+                    label="비밀번호"
+                    value={passwordState.value}
+                    onChange={passwordChangeHandler}
+                    onBlur={validatePasswordHandler}
+                    ref={passwordInputRef}
+                />
                 <div className={classes.actions}>
                     {/*<Button type="submit" className={classes.btn} disabled={!formIsValid}>*/}
                     <Button type="submit" className={classes.btn}>
