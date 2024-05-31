@@ -1,8 +1,9 @@
-import React, {useEffect, useReducer, useState} from 'react';
+import React, {useContext, useEffect, useReducer, useState} from 'react';
 
 import Card from '../UI/Card';
 import classes from './Login.module.css';
 import Button from '../UI/Button';
+import AuthContext from "../../context/AuthContext";
 
 const emailReducer = (state, action) => {
     // 값이 바뀌는 경우 setEnteredEmail
@@ -60,6 +61,8 @@ const Login = (props) => {
         isValid: null,
     });
     const [formIsValid, setFormIsValid] = useState(false);
+
+    const context = useContext(AuthContext);
 
     // 중복된 setFormIsValid를 useEffect를 이용해서 해당 값이 변경될 때 check하도록 함
     // useEffect(() => {
@@ -119,7 +122,7 @@ const Login = (props) => {
     const submitHandler = (event) => {
         event.preventDefault();
         console.log("formIsValid : ",formIsValid)
-        props.onLogin(emailState.value, passwordState.value);
+        context.onLogin(emailState.value, passwordState.value);
     };
 
     return (
