@@ -1,7 +1,18 @@
-import React from 'react';
+import React, {forwardRef, useImperativeHandle, useRef} from 'react';
 import classes from "../components/Login/Login.module.css";
 
-const Input = (props) => {
+const Input = forwardRef((props, ref) => {
+    const inputRef = useRef();
+
+    const active = () => {
+        inputRef.current.focus();
+    };
+
+    useImperativeHandle(ref, () => {
+        return {
+            focus : active,
+        }
+    })
     return (
         <div
             className={`${classes.control} ${
@@ -15,10 +26,10 @@ const Input = (props) => {
                 value={props.value}
                 onChange={props.onChange}
                 onBlur={props.onBlur}
-                ref={props.ref}
+                ref={inputRef}
             />
         </div>
     );
-};
+});
 
 export default Input;
