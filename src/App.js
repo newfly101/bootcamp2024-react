@@ -5,6 +5,7 @@ import UsersList from './components/Users/UsersList';
 import MainHeader from "./components/MainHeader/MainHeader";
 import Login from "./components/Login/Login";
 import Home from "./components/Home/Home";
+import AuthContext from "./context/AuthContext";
 
 function App() {
     const [usersList, setUsersList] = useState([]);
@@ -14,7 +15,7 @@ function App() {
         setUsersList((prevUsersList) => {
             return [
                 ...prevUsersList,
-                { name: uName, age: uAge, id: Math.random().toString() },
+                {name: uName, age: uAge, id: Math.random().toString()},
             ];
         });
     };
@@ -36,20 +37,24 @@ function App() {
     };
 
     return (
-        <>
-            <MainHeader isAuthenticated={isLoggedIn} onLogout={logoutHandler} />
+        <AuthContext.Provider
+            value={{
+                isLoggedIn: isLoggedIn,
+            }}
+        >
+            <MainHeader isAuthenticated={isLoggedIn} onLogout={logoutHandler}/>
             <main>
-                {!isLoggedIn && <Login onLogin={loginHandler} />}
-                {isLoggedIn && <Home onLogout={logoutHandler} />}
+                {!isLoggedIn && <Login onLogin={loginHandler}/>}
+                {isLoggedIn && <Home onLogout={logoutHandler}/>}
             </main>
             {isLoggedIn && <>
-                <AddUser onAddUser={addUserHandler} />
+                <AddUser onAddUser={addUserHandler}/>
                 {usersList.length > 0 && (
-                    <UsersList users={usersList} />
+                    <UsersList users={usersList}/>
                 )}
             </>}
 
-        </>
+        </AuthContext.Provider>
     );
 }
 
