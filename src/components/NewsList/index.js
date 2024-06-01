@@ -10,7 +10,7 @@ const NewsList = () => {
     const getNewsList = async () => {
         try {
             setIsLoading(true);
-            const response = await fetch('https://newsapi.org/v2/everything?q=tesla&from=2024-04-30&sortBy=publishedAt&apiKey=dc8174e9293f434e9cdd22c03b387d57');
+            const response = await fetch('https://newsapi.org/v2/everything?q=tesla&from=2024-04-30&sortBy=publishedAt&apiKey=API_KEY');
             const data = await response.json();
             console.log(data);
             setNews(data.articles);
