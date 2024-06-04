@@ -46,6 +46,12 @@
 
 .actions {
     text-align: center;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.btn {
+
 }
 
 @media (min-width: 768px) {

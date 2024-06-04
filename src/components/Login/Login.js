@@ -7,6 +7,7 @@ import AuthContext from "../../context/AuthContext";
 import authContext from "../../context/AuthContext";
 import Input from "../../Input/Input";
 import DummyText from "../../Input/DummyText";
+import JoinInput from "./JoinInput";
 
 const emailReducer = (state, action) => {
     // 값이 바뀌는 경우 setEnteredEmail
@@ -73,6 +74,10 @@ const Login = () => {
     const passwordInputRef = useRef();
 
     const [text, setText] = useState('Alex');
+
+    const [wantJoin, setWantJoin] = useState(false);
+
+
     // 중복된 setFormIsValid를 useEffect를 이용해서 해당 값이 변경될 때 check하도록 함
     useEffect(() => {
         const identifier = setTimeout(() => {
@@ -133,10 +138,16 @@ const Login = () => {
 
     };
 
+    const joinBtnHandler = () => {
+        setWantJoin(true);
+    }
+
     const foo = useCallback(() => {}, []);
     console.log("Parent Component Rendered");
 
     return (
+        <>
+        {!wantJoin ?
         <Card className={classes.login}>
             <form onSubmit={submitHandler}>
                 <Input
@@ -162,11 +173,18 @@ const Login = () => {
                     <Button type="submit" className={classes.btn}>
                         로그인
                     </Button>
+                    <Button type="button" className={classes.btn} onClick={joinBtnHandler}>
+                        회원가입
+                    </Button>
                 </div>
             </form>
             <DummyText text={"Alex"} func={foo}/>
             <button onClick={() => setText('Brian')}></button>
         </Card>
+        :
+        <JoinInput join={wantJoin}/>
+        }
+        </>
     );
 };
 
