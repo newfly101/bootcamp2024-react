@@ -18,8 +18,8 @@ function App() {
                     {!context.isLoggedIn && <Login/>}
                     {context.isLoggedIn && <Home/>}
                 </main>
-                    <ForwardCounter />
-                    <BackwardCounter />
+                    {/*<ForwardCounter />*/}
+                    {/*<BackwardCounter />*/}
             </>
         );
 }
