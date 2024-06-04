@@ -15,6 +15,7 @@ const JoinInput = (props) => {
             // submit 한 결과 값 전달
             setIsValid(true);
             console.log("enteredName", enteredName);
+            setEnteredName("");
         }
     }
 
@@ -26,7 +27,7 @@ const JoinInput = (props) => {
                 <label htmlFor='userName'>사용자 이름</label>
                 <input type='text' id='username' ref={nameInputRef} value={enteredName}
                         onChange={(event) => setEnteredName(event.target.value)}/>
-                {!isValid && <p className={classes.errorText}>이름에 빈 값이 들어갔습니다</p>}
+                {!isValid && <p className={classes.errorText}>이름에 빈 값이 아니어야 합니다.</p>}
             </div>
             <div className={classes.formActions}>
                 <button className={classes.btn}>제출</button>
